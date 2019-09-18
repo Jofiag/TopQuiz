@@ -6,6 +6,9 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity
 {
+    private TextView mGreetingText;
+    private EditText mNameInput;
+    private Button mPlayButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)

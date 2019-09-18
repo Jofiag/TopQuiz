@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TopQuiz</string>
+    <string name="please_type_your_name">Please type your name</string>
+    <string name="let_s_play">Let\'s play</string>
 </resources>

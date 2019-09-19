@@ -2,4 +2,9 @@
     <string name="app_name">TopQuiz</string>
     <string name="please_type_your_name">Please type your name</string>
     <string name="let_s_play">Let\'s play</string>
+    <string name="answer4">Answer4</string>
+    <string name="answer3">Answer3</string>
+    <string name="answer2">Answer2</string>
+    <string name="question">Question?</string>
+    <string name="answer1">Answer1</string>
 </resources>

@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity
 
             }
 
-            //Chaque fois que l'utilisateur saisit un lettre onTextChanged est appelée afin de savoir
+             //Chaque fois que l'utilisateur saisit un lettre onTextChanged est appelée afin de savoir
             //s'il a commencé à saisir son prénom
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count)

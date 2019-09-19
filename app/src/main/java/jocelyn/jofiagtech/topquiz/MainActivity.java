@@ -58,7 +58,9 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-
+                //Lancement de GameActivity lorsque le bouton est cliqué
+                Intent gameActivityIntent = new Intent(MainActivity.this, GameActivity.class);
+                startActivity(gameActivityIntent);
             }
         });
     }

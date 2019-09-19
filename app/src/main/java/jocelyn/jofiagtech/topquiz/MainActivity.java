@@ -23,5 +23,36 @@ public class MainActivity extends AppCompatActivity
 
         //Désactivation du bouton de l'interface
         mPlayButton.setEnabled(false);
+
+        //notification lorsque l'utilisateur commence à remplir le champ
+        mNameInput.addTextChangedListener(new TextWatcher()
+        {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after)
+            {
+
+            }
+
+            /*
+             Chaque fois que l'utilisateur saisit un lettre onTextChanged est appelée afin de savoir
+             s'il a commencé à saisir son prénom
+            */
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count)
+            {
+                /*
+                 On active le bouton dès que la taille de la chaine de caractères entré est
+                 différent de 0.
+                */
+                mPlayButton.setEnabled(s.toString().length() != 0);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable)
+            {
+
+            }
+        });
+
     }
 }

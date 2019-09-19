@@ -33,17 +33,13 @@ public class MainActivity extends AppCompatActivity
 
             }
 
-            /*
-             Chaque fois que l'utilisateur saisit un lettre onTextChanged est appelée afin de savoir
-             s'il a commencé à saisir son prénom
-            */
+            //Chaque fois que l'utilisateur saisit un lettre onTextChanged est appelée afin de savoir
+            //s'il a commencé à saisir son prénom
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count)
             {
-                /*
-                 On active le bouton dès que la taille de la chaine de caractères entré est
-                 différent de 0.
-                */
+                //On active le bouton dès que la taille de la chaine de caractères entré est
+                //différent de 0.
                 mPlayButton.setEnabled(s.toString().length() != 0);
             }
 
@@ -54,5 +50,16 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        //Détection du clic sur le bouton par l'utilisateur.
+        mPlayButton.setOnClickListener(new View.OnClickListener()
+        {
+            //La méthode onClick() est appelée chaque fois que l'utilisateur clique sur le bouton
+            //C'est dans cette fonction qu'il faut lancer le jeu.
+            @Override
+            public void onClick(View v)
+            {
+
+            }
+        });
     }
 }

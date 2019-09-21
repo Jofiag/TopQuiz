@@ -1,8 +1,10 @@
-package jocelyn.jofiagtech.topquiz;
+package jocelyn.jofiagtech.topquiz.controlleur;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import jocelyn.jofiagtech.topquiz.R;
 
 public class GameActivity extends AppCompatActivity
 {

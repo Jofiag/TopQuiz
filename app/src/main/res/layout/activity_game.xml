@@ -8,6 +8,7 @@
     tools:context=".controlleur.GameActivity">
 
     <TextView
+        android:id="@+id/activity_game_question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -21,6 +22,7 @@
         android:text="@string/question" />
 
     <Button
+        android:id="@+id/activity_game_answer1_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
@@ -28,13 +30,15 @@
         android:text="@string/answer1"/>
 
     <Button
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="20dp"
-    android:textSize="25sp"
-    android:text="@string/answer2"/>
+        android:id="@+id/activity_game_answer2_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:textSize="25sp"
+        android:text="@string/answer2"/>
 
     <Button
+        android:id="@+id/activity_game_answer3_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20sp"
@@ -42,6 +46,7 @@
         android:text="@string/answer3" />
 
     <Button
+        android:id="@+id/activity_game_answer4_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"

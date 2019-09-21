@@ -12,18 +12,22 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import jocelyn.jofiagtech.topquiz.R;
+import jocelyn.jofiagtech.topquiz.model.User;
 
 public class MainActivity extends AppCompatActivity
 {
     private TextView mGreetingText;
     private EditText mNameInput;
     private Button mPlayButton;
+    private User mUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mUser = new User();
 
         //Référence des éléments graphiques
         mGreetingText = findViewById(R.id.activity_main_greeting_txt);
@@ -67,6 +71,10 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
+                //Récupération puis enegistrement du prénom entré par l'utilisateur (son prénom)
+                String firstname = mNameInput.getText().toString();
+                mUser.setFirstName(firstname);
+
                 //Lancement de GameActivity lorsque le bouton est cliqué
                 Intent gameActivityIntent = new Intent(MainActivity.this, GameActivity.class);
                 startActivity(gameActivityIntent);

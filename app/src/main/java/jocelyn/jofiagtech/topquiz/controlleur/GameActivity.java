@@ -77,8 +77,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void onClick(View v)
+    public void onClick(View v) //v : c'est le bouton sur lequel l'utilisateur a cliquer
     {
-
+        //On enrégistre le bouton sur lequel l'utilisateur a cliqué
+        //on utilise un cast car la méthode getTag() renvoit un objet par défaut
+        int answerChoosedIndex = (int)v.getTag();
     }
 }

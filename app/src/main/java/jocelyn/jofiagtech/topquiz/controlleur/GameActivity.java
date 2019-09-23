@@ -1,7 +1,10 @@
 package jocelyn.jofiagtech.topquiz.controlleur;
 
+import androidx.appcompat.app.AlertDialog;
+import  androidx.appcompat.app.AlertDialog.Builder;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +16,7 @@ import java.util.Arrays;
 import jocelyn.jofiagtech.topquiz.R;
 import jocelyn.jofiagtech.topquiz.model.Question;
 import jocelyn.jofiagtech.topquiz.model.QuestionBank;
+
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener
 {
@@ -82,6 +86,39 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             //Si non, on affiche Wrong
             Toast.makeText(this, "Wrong !", Toast.LENGTH_SHORT).show();
         }
+
+        // Affichage du score et arrêt du jeu après que l'utilisateur ai 4 questions posées.
+        if (--mNumberOfQuestions == 0)
+        {
+            //Affichage du score et fin du jeu.
+            endGame();
+        }
+        else
+        {
+            //Si non, on passe à la question suivante.
+            mCurrentQuestion = mQuestionBank.getQuestion();
+            displayQuestion(mCurrentQuestion);
+        }
+
+    }
+
+    private void endGame()
+    {
+        //Affichage du score dans une boite de dialogue
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Well done!")
+                .setMessage("Your score is " + mScore)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        //Fin de l'activité et retour à celle précédente
+                        finish();
+                    }
+                })
+                .create()
+                .show();
     }
 
     public QuestionBank generateQuestions()

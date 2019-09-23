@@ -73,6 +73,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             //On affiche (show()) correct (text) dans l'activité GameActivity (context)
             //pendant une courte durrée (Toast.LENGHT_SHORT)
             Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
+            mScore++;
         }
         else
         {

@@ -29,4 +29,19 @@ public class Question
     {
         this.mAnswerIndex = answerIndex;
     }
+
+    public String getQuestion()
+    {
+        return mQuestion;
+    }
+
+    public int getAnswerIndex()
+    {
+        return mAnswerIndex;
+    }
+
+    public List<String> getChoiceList()
+    {
+        return mChoiceList;
+    }
 }

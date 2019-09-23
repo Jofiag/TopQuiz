@@ -16,6 +16,7 @@ import jocelyn.jofiagtech.topquiz.model.QuestionBank;
 public class GameActivity extends AppCompatActivity implements View.OnClickListener
 {
     private QuestionBank mQuestionBank;
+    private Question mCurrentQuestion;
 
     private TextView mQuestionTextView;
     private Button mAnswerButton1;
@@ -38,7 +39,16 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         mAnswerButton3 = findViewById(R.id.activity_game_answer3_btn);
         mAnswerButton4 = findViewById(R.id.activity_game_answer4_btn);
 
-        this.displayQuestion(mQuestionBank.getQuestion());
+        mCurrentQuestion = mQuestionBank.getQuestion();
+        this.displayQuestion(mCurrentQuestion);
+    }
+
+    @Override
+    public void onClick(View v) //v : c'est le bouton sur lequel l'utilisateur a cliquer
+    {
+        //On enrégistre le bouton sur lequel l'utilisateur a cliqué
+        //on utilise un cast car la méthode getTag() renvoit un objet par défaut
+        int answerChoosedIndex = (int)v.getTag();
     }
 
     public QuestionBank generateQuestions()
@@ -74,13 +84,5 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         mAnswerButton2.setText(question.getChoiceList().get(1));
         mAnswerButton3.setText(question.getChoiceList().get(2));
         mAnswerButton4.setText(question.getChoiceList().get(3));
-    }
-
-    @Override
-    public void onClick(View v) //v : c'est le bouton sur lequel l'utilisateur a cliquer
-    {
-        //On enrégistre le bouton sur lequel l'utilisateur a cliqué
-        //on utilise un cast car la méthode getTag() renvoit un objet par défaut
-        int answerChoosedIndex = (int)v.getTag();
     }
 }

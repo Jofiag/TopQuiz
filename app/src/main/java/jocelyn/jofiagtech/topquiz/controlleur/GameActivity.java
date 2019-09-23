@@ -13,7 +13,7 @@ import jocelyn.jofiagtech.topquiz.R;
 import jocelyn.jofiagtech.topquiz.model.Question;
 import jocelyn.jofiagtech.topquiz.model.QuestionBank;
 
-public class GameActivity extends AppCompatActivity
+public class GameActivity extends AppCompatActivity implements View.OnClickListener
 {
     private QuestionBank mQuestionBank;
 
@@ -39,15 +39,6 @@ public class GameActivity extends AppCompatActivity
         mAnswerButton4 = findViewById(R.id.activity_game_answer4_btn);
 
         this.displayQuestion(mQuestionBank.getQuestion());
-
-        mAnswerButton1.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-
-            }
-        });
     }
 
     public QuestionBank generateQuestions()
@@ -83,5 +74,11 @@ public class GameActivity extends AppCompatActivity
         mAnswerButton2.setText(question.getChoiceList().get(1));
         mAnswerButton3.setText(question.getChoiceList().get(2));
         mAnswerButton4.setText(question.getChoiceList().get(3));
+    }
+
+    @Override
+    public void onClick(View v)
+    {
+
     }
 }

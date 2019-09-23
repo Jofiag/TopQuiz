@@ -25,6 +25,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private Button mAnswerButton3;
     private Button mAnswerButton4;
 
+    private int mScore;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -54,6 +56,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         mAnswerButton2.setOnClickListener(this);
         mAnswerButton3.setOnClickListener(this);
         mAnswerButton4.setOnClickListener(this);
+
+        mScore = 0;
     }
 
     @Override

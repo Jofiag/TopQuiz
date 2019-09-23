@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Arrays;
 
@@ -49,6 +50,18 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         //On enrégistre le bouton sur lequel l'utilisateur a cliqué
         //on utilise un cast car la méthode getTag() renvoit un objet par défaut
         int answerChoosedIndex = (int)v.getTag();
+
+        //Vérification de la réponse choisie par l'utilisateur
+        if(answerChoosedIndex == mCurrentQuestion.getAnswerIndex())
+        {
+            //On affiche (show()) correct (text) dans l'activité GameActivity (context)
+            Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            //Si non, on affiche Wrong
+            Toast.makeText(this, "Wrong !", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public QuestionBank generateQuestions()

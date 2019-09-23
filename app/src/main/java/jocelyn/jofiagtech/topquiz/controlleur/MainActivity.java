@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity
     private EditText mNameInput;
     private Button mPlayButton;
     private User mUser;
+    public static final int GAME_ACTIVITY_REQUEST_CODE = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -78,6 +79,9 @@ public class MainActivity extends AppCompatActivity
                 //Lancement de GameActivity lorsque le bouton est cliqué
                 Intent gameActivityIntent = new Intent(MainActivity.this, GameActivity.class);
                 startActivity(gameActivityIntent);
+                //Lancer l'activité et obtenir une donnée
+                // le deuxième paramètre est l'identifiant de l'activité à lancer
+                startActivityForResult(gameActivityIntent, GAME_ACTIVITY_REQUEST_CODE);
             }
         });
     }

@@ -59,7 +59,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         mAnswerButton4.setOnClickListener(this);
 
         mScore = 0;
-        mNumberOfQuestions = 0;
+        mNumberOfQuestions = 4;
     }
 
     @Override

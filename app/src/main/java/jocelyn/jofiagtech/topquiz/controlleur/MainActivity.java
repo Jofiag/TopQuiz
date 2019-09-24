@@ -3,6 +3,7 @@ package jocelyn.jofiagtech.topquiz.controlleur;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity
     private Button mPlayButton;
     private User mUser;
     public static final int GAME_ACTIVITY_REQUEST_CODE = 2;
+    private SharedPreferences mPreferences;     //Les préferences de l'utiliateur (gérées par l'API SharedPreferences)
 
     // Récupération du résultat envoyé par la GameActivity
     // onActivityResult() est appelée lorsqu'une activité renvoit un résultat
@@ -41,6 +43,8 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         mUser = new User();
+
+        mPreferences = getPreferences(MODE_PRIVATE); //Initialisation de mPreferences en mode privé
 
         //Référence des éléments graphiques
         mGreetingText = findViewById(R.id.activity_main_greeting_txt);

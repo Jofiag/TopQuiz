@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity
     private Button mPlayButton;
     private User mUser;
     public static final int GAME_ACTIVITY_REQUEST_CODE = 2;
-    private SharedPreferences mPreferences;     //Les préferences de l'utiliateur (gérées par l'API SharedPreferences)
+    public SharedPreferences mPreferences;     //Les préferences de l'utiliateur (gérées par l'API SharedPreferences)
 
     public static final String PREF_KEY_SCORE = "PREF_KEY_SCORE";
     public static final String PREF_KEY_FIRSTNAME = "PREF_KEY_FIRSTNAME";
@@ -40,6 +40,18 @@ public class MainActivity extends AppCompatActivity
 
             //Sauvegarde du score dans les préférences
             mPreferences.edit().putInt(PREF_KEY_SCORE, score).apply();
+
+            //Mise à jour de l'affichage lorsqu'une partie est terminée
+            displayTheLastScore();
+
+            //Valorisation du champ avec le prénom du dernier utilisateur
+            if (mPreferences.getString(PREF_KEY_FIRSTNAME, "Unknown").length() != 0)
+            {
+                mNameInput.setText(mPreferences.getString(PREF_KEY_FIRSTNAME, "Unknown"));
+
+                //Positionnement du curseur à la fin du prénom
+                mNameInput.setSelection(mPreferences.getString(PREF_KEY_FIRSTNAME, "Unknown").length());
+            }
         }
     }
 
@@ -60,6 +72,7 @@ public class MainActivity extends AppCompatActivity
         mNameInput = findViewById(R.id.activity_main_name_input);
         mPlayButton = findViewById(R.id.activity_main_play_btn);
 
+        //Affichage du dernier score à la reprise du jeu
         displayTheLastScore();
 
         //Désactivation du bouton de l'interface

@@ -22,6 +22,18 @@ public class MainActivity extends AppCompatActivity
     private User mUser;
     public static final int GAME_ACTIVITY_REQUEST_CODE = 2;
 
+    // Récupération du résultat envoyé par la GameActivity
+    // onActivityResult() est appelée lorsqu'une activité renvoit un résultat
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        if (GAME_ACTIVITY_REQUEST_CODE == requestCode && RESULT_OK == resultCode)
+        {
+            int score = data.getIntExtra(GameActivity.BUNDLE_EXTRA_SCORE, 0);
+            //0 est la valeur qui sera affectée au score si on arrive pas à récupérer le scor envoyé par la GameActivity.
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {

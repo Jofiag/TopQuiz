@@ -117,8 +117,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                     {
                         // Sauvegarde et envoit du score à l'activité précédente (MainActivity)
                         Intent intent = new Intent(); //Il est nécéssaire d'envoyer le score à MainActivity sous forme d'intent
-                        intent.putExtra(BUNDLE_EXTRA_SCORE, mScore); //On envoit le score dans notre intent
-                        setResult(RESULT_OK, intent); //RESULT_OK indique qu'il n'y a pas eu de problème
+                        intent.putExtra(BUNDLE_EXTRA_SCORE, mScore); //On envoit le score dans notre intent, BUNDLE... sera utilisé dans MainActivity pour récupére le score envoyé
+                        setResult(RESULT_OK, intent); //RESULT_OK indique au système android qu'il n'y a pas eu de problème
                         //Fin de l'activité et retour à celle précédente
                         finish();
                     }

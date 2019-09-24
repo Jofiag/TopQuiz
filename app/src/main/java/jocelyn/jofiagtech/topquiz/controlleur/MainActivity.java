@@ -24,6 +24,9 @@ public class MainActivity extends AppCompatActivity
     public static final int GAME_ACTIVITY_REQUEST_CODE = 2;
     private SharedPreferences mPreferences;     //Les préferences de l'utiliateur (gérées par l'API SharedPreferences)
 
+    public static final String PREF_KEY_SCORE = "PREF_KEY_SCORE";
+    public static final String PREF_KEY_FIRSTNAME = "PREF_KEY_FIRSTNAME";
+
     // Récupération du résultat envoyé par la GameActivity
     // onActivityResult() est appelée lorsqu'une activité renvoit un résultat
     @Override
@@ -35,7 +38,7 @@ public class MainActivity extends AppCompatActivity
             //0 est la valeur qui sera affectée au score si on arrive pas à récupérer le scor envoyé par la GameActivity.
 
             //Sauvegarde du score dans les préférences
-            mPreferences.edit().putInt("score", score).apply();
+            mPreferences.edit().putInt(PREF_KEY_SCORE, score).apply();
         }
     }
 
@@ -98,7 +101,7 @@ public class MainActivity extends AppCompatActivity
                 mUser.setFirstName(firstname);
 
                 //Sauvegarde du prénom dans les préférences
-                mPreferences.edit().putString("firstname", mUser.getFirstName()).apply();
+                mPreferences.edit().putString(PREF_KEY_FIRSTNAME, mUser.getFirstName()).apply();
 
                 //Lancement de GameActivity lorsque le bouton est cliqué
                 Intent gameActivityIntent = new Intent(MainActivity.this, GameActivity.class);

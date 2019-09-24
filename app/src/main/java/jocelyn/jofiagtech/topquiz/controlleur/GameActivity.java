@@ -90,28 +90,26 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(this, "Wrong !", Toast.LENGTH_SHORT).show();
         }
 
-        //Augmentation de la durée d'affichage des Toast
+        //Augmentation de la durée d'affichage des messages Toast
         new Handler().postDelayed(new Runnable()
         {
             @Override
             public void run()
             {
-
+                // Affichage du score et arrêt du jeu après que l'utilisateur ai répondu aux 4 questions posées.
+                if (--mNumberOfQuestions == 0)
+                {
+                    //Si on est à la dernière question, quitter le jeu
+                    endGame();
+                }
+                else
+                {
+                    //Si non, on passe à la question suivante.
+                    mCurrentQuestion = mQuestionBank.getQuestion();
+                    displayQuestion(mCurrentQuestion);
+                }
             }
         }, 2000);  // LENGTH_SHORT
-        // Affichage du score et arrêt du jeu après que l'utilisateur ai répondu aux 4 questions posées.
-        if (--mNumberOfQuestions == 0)
-        {
-            //Fin du jeu
-            endGame();
-        }
-        else
-        {
-            //Si non, on passe à la question suivante.
-            mCurrentQuestion = mQuestionBank.getQuestion();
-            displayQuestion(mCurrentQuestion);
-        }
-
     }
 
     private void endGame()

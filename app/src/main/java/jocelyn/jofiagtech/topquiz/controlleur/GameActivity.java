@@ -1,10 +1,10 @@
 package jocelyn.jofiagtech.topquiz.controlleur;
 
 import androidx.appcompat.app.AlertDialog;
-import  androidx.appcompat.app.AlertDialog.Builder;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -31,6 +31,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     private int mScore;
     private int mNumberOfQuestions;
+
+    public static final String BUNDLE_EXTRA_SCORE = "BUNDLE_EXTRA_SCORE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -113,6 +115,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onClick(DialogInterface dialog, int which)
                     {
+                        // Sauvegarde et envoit du score à l'activité précédente (MainActivity)
+                        Intent intent = new Intent(); //Il est nécéssaire d'envoyer le score à MainActivity sous forme d'intent
+                        intent.putExtra(BUNDLE_EXTRA_SCORE, mScore); //On envoit le score dans notre intent
+                        setResult(RESULT_OK, intent); //RESULT_OK indique qu'il n'y a pas eu de problème
                         //Fin de l'activité et retour à celle précédente
                         finish();
                     }

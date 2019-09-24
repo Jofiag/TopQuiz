@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity
     private EditText mNameInput;
     private Button mPlayButton;
     private User mUser;
-    public static final int GAME_ACTIVITY_REQUEST_CODE = 3;
+    public static final int GAME_ACTIVITY_REQUEST_CODE = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)

@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after)
             {
-
+                mPreferences.getString(PREF_KEY_FIRSTNAME, "Unknown");
             }
 
              //Chaque fois que l'utilisateur saisit un lettre onTextChanged est appelée afin de savoir

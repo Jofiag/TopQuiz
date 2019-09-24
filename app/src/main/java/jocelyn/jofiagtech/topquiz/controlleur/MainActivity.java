@@ -2,6 +2,7 @@ package jocelyn.jofiagtech.topquiz.controlleur;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -59,6 +60,8 @@ public class MainActivity extends AppCompatActivity
         mNameInput = findViewById(R.id.activity_main_name_input);
         mPlayButton = findViewById(R.id.activity_main_play_btn);
 
+        displayTheLastScore();
+
         //Désactivation du bouton de l'interface
         mPlayButton.setEnabled(false);
 
@@ -91,7 +94,7 @@ public class MainActivity extends AppCompatActivity
         //Détection du clic sur le bouton par l'utilisateur.
         mPlayButton.setOnClickListener(new View.OnClickListener()
         {
-            //La méthode onClick() est appelée chaque fois que l'utilisateur clique sur le bouton
+            //La méthode onClick() est appelée chaque fois que l'utilisateur clique sur le bouton de démarrage du jeu
             //C'est dans cette fonction qu'il faut lancer le jeu.
             @Override
             public void onClick(View v)
@@ -105,11 +108,23 @@ public class MainActivity extends AppCompatActivity
 
                 //Lancement de GameActivity lorsque le bouton est cliqué
                 Intent gameActivityIntent = new Intent(MainActivity.this, GameActivity.class);
-                startActivity(gameActivityIntent);
                 //Lancer l'activité et obtenir une donnée
                 // le deuxième paramètre est l'identifiant de l'activité à lancer
                 startActivityForResult(gameActivityIntent, GAME_ACTIVITY_REQUEST_CODE);
             }
         });
+    }
+
+    //Affichage du dernier score
+    @SuppressLint("SetTextI18n")
+    public void displayTheLastScore()
+    {
+        String firstnameInPreferences = mPreferences.getString(PREF_KEY_FIRSTNAME, "Unknown");
+        int scoreInPreferences = mPreferences.getInt(PREF_KEY_SCORE, -1);
+        if (firstnameInPreferences.length() != 0 && scoreInPreferences >= 0 )
+        {
+            mGreetingText.setText("Welcome back " + firstnameInPreferences + "\n"
+                    + "Your last score was " + scoreInPreferences + ", will you do better?");
+        }
     }
 }

@@ -33,6 +33,9 @@ public class MainActivity extends AppCompatActivity
         {
             int score = data.getIntExtra(GameActivity.BUNDLE_EXTRA_SCORE, 0);
             //0 est la valeur qui sera affectée au score si on arrive pas à récupérer le scor envoyé par la GameActivity.
+
+            //Sauvegarde du score dans les préférences
+            mPreferences.edit().putInt("score", score).apply();
         }
     }
 
@@ -44,7 +47,9 @@ public class MainActivity extends AppCompatActivity
 
         mUser = new User();
 
-        mPreferences = getPreferences(MODE_PRIVATE); //Initialisation de mPreferences en mode privé
+        //Initialisation de mPreferences en mode privé pour éviter que les autres appli du téléphone y est accès
+        // car cette variable est enrégistrée dans la mémoire du téléphone
+        mPreferences = getPreferences(MODE_PRIVATE);
 
         //Référence des éléments graphiques
         mGreetingText = findViewById(R.id.activity_main_greeting_txt);
@@ -91,6 +96,9 @@ public class MainActivity extends AppCompatActivity
                 //Récupération puis enegistrement du prénom entré par l'utilisateur (son prénom)
                 String firstname = mNameInput.getText().toString();
                 mUser.setFirstName(firstname);
+
+                //Sauvegarde du prénom dans les préférences
+                mPreferences.edit().putString("firstname", mUser.getFirstName()).apply();
 
                 //Lancement de GameActivity lorsque le bouton est cliqué
                 Intent gameActivityIntent = new Intent(MainActivity.this, GameActivity.class);

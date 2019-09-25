@@ -37,6 +37,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private int mNumberOfQuestions;
 
     public static final String BUNDLE_EXTRA_SCORE = "BUNDLE_EXTRA_SCORE";
+    public static final String BUNDLE_STATE_SCORE = "currentScore";
+    public static final String BUNDLE_STATE_QUESTION = "currentQuestion";
 
     private boolean mEnableTouchEvents; //Autiliser pour désactiver le click lors du Toast
 
@@ -232,5 +234,16 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     {
         super.onDestroy();
         System.out.println("GameActivity::onDestroy()");
+    }
+
+    //Résolution du problème : lorsque l'utilisateur tourne l'écran la question change (android relance l'activité).
+    //Pour se faire, il faut sauvegarder les données importantes : le nombre de question et le score.
+    //La méthode onSaveInstanceState() permet à Android de mémoriser des données pour les restituer ensuite.
+    @Override
+    protected void onSaveInstanceState(Bundle outState)
+    {
+        outState.putInt(BUNDLE_STATE_SCORE, mScore);
+        outState.putInt(BUNDLE_STATE_QUESTION, mNumberOfQuestions);
+        super.onSaveInstanceState(outState);
     }
 }

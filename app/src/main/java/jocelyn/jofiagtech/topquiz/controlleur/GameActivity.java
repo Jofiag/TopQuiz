@@ -74,8 +74,18 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         mAnswerButton3.setOnClickListener(this);
         mAnswerButton4.setOnClickListener(this);
 
-        mScore = 0;
-        mNumberOfQuestions = 4;
+        //On récupère le score et le nombre de question de la mémoire d'android s'il y en a
+        if (savedInstanceState != null)
+        {
+            mScore = savedInstanceState.getInt(BUNDLE_STATE_SCORE);
+            mNumberOfQuestions = savedInstanceState.getInt(BUNDLE_STATE_QUESTION);
+        }
+        else
+        {
+            //Si non, on les initialise aux points de départ
+            mScore = 0;
+            mNumberOfQuestions = 4;
+        }
         mEnableTouchEvents = true;
     }
 

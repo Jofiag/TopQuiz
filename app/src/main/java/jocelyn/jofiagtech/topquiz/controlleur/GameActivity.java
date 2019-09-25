@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -34,6 +35,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private int mNumberOfQuestions;
 
     public static final String BUNDLE_EXTRA_SCORE = "BUNDLE_EXTRA_SCORE";
+
+    private boolean mEnableTouchEvents; //Autiliser pour désactiver le click lors du Toast
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -67,6 +70,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
         mScore = 0;
         mNumberOfQuestions = 4;
+        mEnableTouchEvents = true;
     }
 
     @Override
@@ -90,12 +94,15 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(this, "Wrong !", Toast.LENGTH_SHORT).show();
         }
 
+        mEnableTouchEvents = false;  //Touché de l'écran sans effet
+
         //Augmentation de la durée d'affichage des messages Toast
         new Handler().postDelayed(new Runnable()
         {
             @Override
             public void run()
             {
+                mEnableTouchEvents = true;
                 // Affichage du score et arrêt du jeu après que l'utilisateur ai répondu aux 4 questions posées.
                 if (--mNumberOfQuestions == 0)
                 {
@@ -109,7 +116,16 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                     displayQuestion(mCurrentQuestion);
                 }
             }
-        }, 2000);  // LENGTH_SHORT
+        }, 2000);  //LENGTH_SHORT
+    }
+
+    //La methode dispatchTouchEvent() est appelée à chaque fois que l'utilisateur touche l'écran.
+    //Cette méthode permet de gérer un évenement.
+    //Si le touché de l'écran est à true alors le joueur peut cliqué
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev)
+    {
+        return mEnableTouchEvents && super.dispatchTouchEvent(ev);
     }
 
     private void endGame()

@@ -61,6 +61,8 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        System.out.println("GameActivity::onCreate()");
+
         mUser = new User();
 
         //Initialisation de mPreferences en mode privé pour éviter que les autres appli du téléphone y est accès
@@ -139,5 +141,49 @@ public class MainActivity extends AppCompatActivity
             mGreetingText.setText("Welcome back " + firstnameInPreferences + "\n"
                     + "Your last score was " + scoreInPreferences + ", will you do better?");
         }
+    }
+
+    //Cycle de vie d'une activité.
+    //Surchage des méthode afin de détecter comment elles sont appelées.
+    /* La 1ère méthode : onCreate() qui est déjà implémentée
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState)
+    {
+        super.onCreate(savedInstanceState, persistentState);
+    }*/
+
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+        System.out.println("GameActivity::onStart()");
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        System.out.println("GameActivity::onResume()");
+    }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+        System.out.println("GameActivity::onPause()");
+    }
+
+    @Override
+    protected void onStop()
+    {
+        super.onStop();
+        System.out.println("GameActivity::onStop()");
+    }
+
+    @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+        System.out.println("GameActivity::onDestroy()");
     }
 }

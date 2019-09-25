@@ -1,5 +1,6 @@
 package jocelyn.jofiagtech.topquiz.controlleur;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.PersistableBundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -43,6 +45,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        System.out.println("GameActivity::onCreate()"); //Trace
 
         mQuestionBank = this.generateQuestions();
 
@@ -184,5 +188,49 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         mAnswerButton2.setText(question.getChoiceList().get(1));
         mAnswerButton3.setText(question.getChoiceList().get(2));
         mAnswerButton4.setText(question.getChoiceList().get(3));
+    }
+
+    //Cycle de vie d'une activité.
+    //Surchage des méthode afin de détecter comment elles sont appelées.
+    /* La 1ère méthode : onCreate() qui est déjà implémentée
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState)
+    {
+        super.onCreate(savedInstanceState, persistentState);
+    }*/
+
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+        System.out.println("GameActivity::onStart()");
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        System.out.println("GameActivity::onResume()");
+    }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+        System.out.println("GameActivity::onPause()");
+    }
+
+    @Override
+    protected void onStop()
+    {
+        super.onStop();
+        System.out.println("GameActivity::onStop()");
+    }
+
+    @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+        System.out.println("GameActivity::onDestroy()");
     }
 }

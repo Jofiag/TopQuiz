@@ -137,7 +137,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     //La methode dispatchTouchEvent() est appelée à chaque fois que l'utilisateur touche l'écran.
     //Cette méthode permet de gérer un évenement.
-    //Si le touché de l'écran est à true alors le joueur peut cliqué
+    //Si le touché de l'écran est à true alors le joueur peut cliqué, si non il ne pourra pas.
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev)
     {

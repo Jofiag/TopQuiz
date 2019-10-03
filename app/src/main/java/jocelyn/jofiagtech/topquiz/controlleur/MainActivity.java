@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -61,7 +62,12 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        System.out.println("GameActivity::onCreate()");
+        System.out.println("MainActivity::onCreate()");
+
+        //Ajout de traces
+        Log.d("MainActivity", "Test trace Debug");     //Trace de debogage
+        Log.e("MainActivity", "Fake error");           //Trace d'erreur
+
 
         mUser = new User();
 
@@ -152,7 +158,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState, persistentState);
     }*/
 
-    @Override
+    /*@Override
     protected void onStart()
     {
         super.onStart();
@@ -185,5 +191,5 @@ public class MainActivity extends AppCompatActivity
     {
         super.onDestroy();
         System.out.println("GameActivity::onDestroy()");
-    }
+    }*/
 }

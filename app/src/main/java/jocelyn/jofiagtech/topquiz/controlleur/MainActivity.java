@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity
 
     public static final String PREF_KEY_SCORE = "PREF_KEY_SCORE";
     public static final String PREF_KEY_FIRSTNAME = "PREF_KEY_FIRSTNAME";
+    private static final String TAG = "MainActivity";   //logt (racourci)
+
 
     // Récupération du résultat envoyé par la GameActivity
     // onActivityResult() est appelée lorsqu'une activité renvoit un résultat
@@ -67,7 +69,7 @@ public class MainActivity extends AppCompatActivity
         //Ajout de traces
         Log.d("MainActivity", "Test trace Debug");     //Trace de debogage
         Log.e("MainActivity", "Fake error");           //Trace d'erreur
-
+        Log.d(TAG, "onCreate() called with: savedInstanceState = [" + savedInstanceState + "]"); //logm (racourci)
 
         mUser = new User();
 

@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity
 
     public static final String PREF_KEY_SCORE = "PREF_KEY_SCORE";
     public static final String PREF_KEY_FIRSTNAME = "PREF_KEY_FIRSTNAME";
-    private static final String TAG = MainActivity.class.getSimpleName();   //logt (racourci)
+    private static final String TAG = MainActivity.class.getSimpleName();   //logt (racourci). Tous les raccourci sont dans AndroidLog dans les paramètres.
 
 
     // Récupération du résultat envoyé par la GameActivity
